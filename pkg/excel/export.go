@@ -2,6 +2,7 @@ package excel
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
@@ -26,6 +27,8 @@ func Export(app *fiber.Ctx) error {
 	for key := range data[0] {
 		headers = append(headers, key)
 	}
+
+	sort.Sort(sort.StringSlice(headers))
 
 	for i, header := range headers {
 		cell, _ := excelize.CoordinatesToCellName(i+1, 1)
