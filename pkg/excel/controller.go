@@ -8,4 +8,5 @@ func RegisterRoutes(app *fiber.App) {
 
 	routes := app.Group("/excel")
 	routes.Post("/", Export)
+	routes.Post("/handle", ExportHandler)
 }
